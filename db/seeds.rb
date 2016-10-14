@@ -1,4 +1,12 @@
 require 'csv'
+require 'ffaker'
+
+def rand_in_range(from, to)
+  rand * (to - from) + from
+end
+def rand_time(from, to=Time.now)
+  Time.at(rand_in_range(from.to_f, to.to_f))
+end
 
 Shipper.destroy_all
 
@@ -28,3 +36,11 @@ end
   }
   Shipper.create!(new_date)
 end
+
+40.times do
+  User.create(
+      first_name: FFaker::Name.first_name, last_name: FFaker::Name.last_name,
+      age: rand(18..60), cnt_msgs:0, last_visit: rand_time(7.days.ago)
+  )
+end
+

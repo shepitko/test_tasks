@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shippers</h1>
+
+<div>
+  <%= form_tag("/msgs", method: "put") do %>
+      <div>
+        <%= select_tag :day, options_for_select([['one day', 1], ['three days', 3], ['five days', 5]])%>
+        <%= submit_tag("Send") %>
+      </div>
+<% end %>
+</div>
+<table >
+  <thead>
+  <tr>
+      <th>id</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Last Visit</th>
+      <th>Messages counter</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%=user.id%></td>
+        <td><%=user.first_name%></td>
+        <td><%=user.last_name%></td>
+        <td><%=user.last_visit%></td>
+        <td><%=user.cnt_msgs%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
