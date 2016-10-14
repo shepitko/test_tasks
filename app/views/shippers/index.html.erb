@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shippers</h1>
+
+<div>
+  <%= form_tag("/search", method: "get") do %>
+      <div>
+        <%= label_tag(:country, "Counry:") %>
+        <%= text_field_tag(:country) %>
+      </div>
+      <div>
+        <%= label_tag(:city, "City:") %>
+        <%= text_field_tag(:city) %>
+      </div>
+      <div>
+        <%= label_tag(:weight, "Weight:") %>
+        <%= text_field_tag(:weight) %>
+      </div>
+      <div>
+        <%= label_tag(:price, "Price:") %>
+        <%= text_field_tag(:price) %>
+      </div>
+      <%= submit_tag("Search") %>
+  <% end %>
+</div>
+<table>
+  <thead>
+  <tr>
+      <th>id</th>
+      <th>Country</th>
+      <th>Region</th>
+      <th>City</th>
+      <th>zip_from</th>
+      <th>zip_to</th>
+      <th>weight_from</th>
+      <th>weight_to</th>
+      <th>price</th>
+      <th>delivery_type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shippers.each do |shipper| %>
+      <tr>
+        <td><%=shipper.id%></td>
+        <td><%=shipper.country%></td>
+        <td><%=shipper.region%></td>
+        <td><%=shipper.city%></td>
+        <td><%=shipper.zip_from%></td>
+        <td><%=shipper.zip_to%></td>
+        <td><%=shipper.weight_from%></td>
+        <td><%=shipper.weight_to%></td>
+        <td><%=shipper.price%></td>
+        <td><%=shipper.delivery_type%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
