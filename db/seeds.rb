@@ -37,10 +37,10 @@ end
   Shipper.create!(new_date)
 end
 
-60.times do
+100.times do
   User.create(
       first_name: FFaker::Name.first_name, last_name: FFaker::Name.last_name,
-      age: rand(18..60), cnt_msgs:0, last_visit: rand_time(7.days.ago)
+      age: rand(18..60), cnt_msgs:0, last_visit: rand_time(7.days.ago), email: FFaker::Internet.email
   )
 end
 
